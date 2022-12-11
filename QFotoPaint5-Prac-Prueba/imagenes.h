@@ -191,6 +191,12 @@ void ecualizar_hist_separado(int nfoto, int nres);
 
 void ecualizar_hist_conjunto(int nfoto, int nres);
 
+void generar_espectro(int nfoto, int nres);
+
+void cambiar_modelo(int nfoto,int nres,int modelo);
+
+void ecualizacion_local_hist(int nfoto,int nres, int radio);
+
 string Lt1(string cadena);
 // Convertir una cadena de UTF8 a Latin1
 

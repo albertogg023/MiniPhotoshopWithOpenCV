@@ -26,10 +26,6 @@ private slots:
 
     void on_checkBox_stateChanged(int arg1);
 
-    void on_buttonBox_accepted();
-
-    void on_buttonBox_rejected();
-
     void on_Ajustelineal_accepted();
 
     void on_Ajustelineal_rejected();

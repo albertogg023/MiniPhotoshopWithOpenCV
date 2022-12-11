@@ -997,6 +997,89 @@ void ver_perfilado(int nfoto, int tam, double grado, bool guardar)
 
 //---------------------------------------------------------------------------
 
+void generar_espectro(int nfoto, int nres)
+{
+    Mat gris;
+    Mat escala;
+    cvtColor(foto[nfoto].img,gris,COLOR_BGR2GRAY); //Pasamos a escala de grises la imagen
+    gris.convertTo(escala, CV_32FC1, 1.0/255);
+    Mat imagenDFT;
+    dft(escala, imagenDFT, DFT_COMPLEX_OUTPUT); //Se aplica DFT
+    vector<Mat> canales;
+    split(imagenDFT, canales);
+    pow(canales[0], 2, canales[0]);
+    pow(canales[1], 2, canales[1]);
+    pow(canales[0]+canales[1], 0.5, imagenDFT);
+    Mat res;
+    imagenDFT.convertTo(res, CV_8UC1, -1, 255);
+    int cx = res.cols/2;
+    int cy = res.rows/2;
+    Mat q0(res, Rect(0, 0, cx, cy));   // Top-Left - Create a ROI per quadrant
+    Mat q1(res, Rect(cx, 0, cx, cy));  // Top-Right
+    Mat q2(res, Rect(0, cy, cx, cy));  // Bottom-Left
+    Mat q3(res, Rect(cx, cy, cx, cy)); // Bottom-Right
+    Mat tmp;                           // swap quadrants (Top-Left with Bottom-Right)
+    q0.copyTo(tmp);
+    q3.copyTo(q0);
+    tmp.copyTo(q3);
+    q1.copyTo(tmp);                    // swap quadrant (Top-Right with Bottom-Left)
+    q2.copyTo(q1);
+    tmp.copyTo(q2);
+    crear_nueva(nres,res);
+}
+
+//---------------------------------------------------------------------------
+
+void cambiar_modelo(int nfoto,int nres,int modelo)
+{
+    switch (modelo)
+    {
+    case 0:
+        cvtColor(foto[nfoto].img,foto[nfoto].img,COLOR_BGR2RGB);
+        break;
+    case 1:
+        cvtColor(foto[nfoto].img,foto[nfoto].img,COLOR_BGR2HLS);
+        break;
+    case 2:
+        cvtColor(foto[nfoto].img,foto[nfoto].img,COLOR_BGR2HSV);
+        break;
+    case 3:
+        cvtColor(foto[nfoto].img,foto[nfoto].img,COLOR_BGR2XYZ);
+        break;
+    case 4:
+        cvtColor(foto[nfoto].img,foto[nfoto].img,COLOR_BGR2YUV);
+        break;
+    }
+    crear_nueva(nres,foto[nfoto].img);
+
+}
+
+//---------------------------------------------------------------------------
+
+void ecualizacion_local_hist(int nfoto,int nres, int radio)
+{
+    // Crear un objeto de la clase cv::Ptr<cv::CLAHE>
+    cv::Ptr<cv::CLAHE> clahe = cv::createCLAHE();
+
+    // Establecer el límite de clip para la ecualización
+    clahe->setClipLimit(radio);
+
+    // Aplicar la ecualización a la imagen original
+    Mat lab_image;
+    cvtColor(foto[nfoto].img,lab_image,COLOR_BGR2Lab);
+    // Extract the L channel
+    vector<Mat> lab_channels(3);
+    split(lab_image, lab_channels);  // now we have the L image in lab_planes[0]
+    clahe->apply(lab_channels[0], lab_channels[0]);
+    merge(lab_channels,lab_image);
+    Mat res;
+    cvtColor(lab_image,res,COLOR_Lab2BGR);
+    // Mostrar la imagen ecualizada
+    crear_nueva(nres,res);
+}
+
+//---------------------------------------------------------------------------
+
 string Lt1(string cadena)
 {
     QString temp= QString::fromUtf8(cadena.c_str());

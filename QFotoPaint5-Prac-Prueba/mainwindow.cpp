@@ -26,6 +26,7 @@ using namespace cv;
 #include "video.h"
 #include "movimiento.h"
 #include "informacion.h"
+#include "modelocolor.h"
 
 
 QString FiltroImagen = "Todos los formatos (*.jpg *.jpeg *.jpe .jp2 *.tif *.tiff *.png *.gif *.bmp *.dib *.webp *.ppm);;Archivos JPG (*.jpg *.jpeg *.jpe);;Archivos TIF (*.tif *.tiff);;Archivos PNG (*.png);;Archivos GIF (*.gif);;Archivos BMP (*.bmp *.dib);;Otros (*.*)";
@@ -501,19 +502,42 @@ void MainWindow::on_actionInformaci_n_triggered()
 
 void MainWindow::on_actionEscala_de_color_Falso_triggered()
 {
-     if(foto_activa()!=1 && primera_libre()!=-1)
+     if(foto_activa()!=-1 && primera_libre()!=-1)
         escala_color_falso(foto_activa(),primera_libre());
 }
 
 void MainWindow::on_actionCanales_separados_triggered()
 {
-    if(foto_activa()!=1 && primera_libre()!=-1)
+    if(foto_activa()!=-1 && primera_libre()!=-1)
         ecualizar_hist_separado(foto_activa(),primera_libre());
 }
 
 
 void MainWindow::on_actionCanales_conjuntos_triggered()
 {
-    if(foto_activa()!=1 && primera_libre()!=-1)
+    if(foto_activa()!=-1 && primera_libre()!=-1)
         ecualizar_hist_conjunto(foto_activa(),primera_libre());
+}
+
+void MainWindow::on_actionEspectro_triggered()
+{
+    if(foto_activa()!=-1 && primera_libre()!=-1)
+        generar_espectro(foto_activa(),primera_libre());
+}
+
+void MainWindow::on_actionModelo_de_color_triggered()
+{
+    if(foto_activa()!=-1 && primera_libre()!=-1)
+    {
+        ModeloColor m(foto_activa(),primera_libre());
+        m.exec();
+    }
+}
+
+void MainWindow::on_actionAjuste_lineal_del_hisograma_triggered()
+{
+     if(foto_activa()!=-1 && primera_libre()!=-1)
+     {
+         ecualizacion_local_hist(foto_activa(),primera_libre(),4);
+     }
 }

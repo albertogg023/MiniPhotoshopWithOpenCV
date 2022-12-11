@@ -18,6 +18,7 @@ SOURCES += main.cpp\
     ajustelineal.cpp \
     capturarvideo.cpp \
     dialogbajorelieve.cpp \
+    histlocal.cpp \
     histograma2d.cpp \
     informacion.cpp \
     mainwindow.cpp \
@@ -25,6 +26,7 @@ SOURCES += main.cpp\
     dialognueva.cpp \
     brillocontraste.cpp \
     matsalutlum.cpp \
+    modelocolor.cpp \
     movimiento.cpp \
     perfilado.cpp \
     perspectiva.cpp \
@@ -40,12 +42,14 @@ HEADERS  += mainwindow.h \
     ajustelineal.h \
     capturarvideo.h \
     dialogbajorelieve.h \
+    histlocal.h \
     histograma2d.h \
     imagenes.h \
     dialognueva.h \
     brillocontraste.h \
     informacion.h \
     matsalutlum.h \
+    modelocolor.h \
     movimiento.h \
     perfilado.h \
     perspectiva.h \
@@ -63,9 +67,11 @@ FORMS    += mainwindow.ui \
     dialogbajorelieve.ui \
     dialognueva.ui \
     brillocontraste.ui \
+    histlocal.ui \
     histograma2d.ui \
     informacion.ui \
     matsalutlum.ui \
+    modelocolor.ui \
     movimiento.ui \
     perfilado.ui \
     perspectiva.ui \

@@ -30,9 +30,6 @@ private slots:
 
     void on_radioButton_3_clicked();
 
-    void on_buttonBox_accepted();
-
-    void on_buttonBox_rejected();
 
 private:
     Ui::dialogBajoRelieve *ui;

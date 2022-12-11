@@ -84,6 +84,9 @@ private slots:
     void on_actionEscala_de_color_Falso_triggered();
     void on_actionCanales_separados_triggered();
     void on_actionCanales_conjuntos_triggered();
+    void on_actionEspectro_triggered();
+    void on_actionModelo_de_color_triggered();
+    void on_actionAjuste_lineal_del_hisograma_triggered();
 };
 
 extern MainWindow *w;

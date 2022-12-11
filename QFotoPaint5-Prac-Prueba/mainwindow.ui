@@ -478,6 +478,9 @@ p, li { white-space: pre-wrap; }
     <addaction name="actionAjuste_lineal"/>
     <addaction name="actionPerspectiva"/>
     <addaction name="menuEcualizar_histograma"/>
+    <addaction name="actionAjuste_lineal_del_hisograma"/>
+    <addaction name="actionEspectro"/>
+    <addaction name="actionModelo_de_color"/>
    </widget>
    <widget class="QMenu" name="menuEfectos">
     <property name="title">
@@ -776,6 +779,26 @@ p, li { white-space: pre-wrap; }
   <action name="actionCanales_conjuntos">
    <property name="text">
     <string>Canales conjuntos</string>
+   </property>
+  </action>
+  <action name="actionEspectro">
+   <property name="text">
+    <string>Espectro</string>
+   </property>
+  </action>
+  <action name="actionRGB">
+   <property name="text">
+    <string>RGB</string>
+   </property>
+  </action>
+  <action name="actionModelo_de_color">
+   <property name="text">
+    <string>Modelo de color...</string>
+   </property>
+  </action>
+  <action name="actionAjuste_lineal_del_hisograma">
+   <property name="text">
+    <string>Ecualización local...</string>
    </property>
   </action>
  </widget>
