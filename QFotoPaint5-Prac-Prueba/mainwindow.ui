@@ -1,0 +1,787 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>544</width>
+    <height>140</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>544</width>
+    <height>140</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>544</width>
+    <height>140</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>QFotoPaint4</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="recursos.qrc">
+    <normaloff>:/imagenes/icono.png</normaloff>:/imagenes/icono.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QToolButton" name="toolButton">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>0</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>...</string>
+    </property>
+    <property name="icon">
+     <iconset resource="recursos.qrc">
+      <normaloff>:/imagenes/abrir.png</normaloff>:/imagenes/abrir.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>32</width>
+      <height>32</height>
+     </size>
+    </property>
+    <property name="autoRaise">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>...</string>
+    </property>
+    <property name="icon">
+     <iconset resource="recursos.qrc">
+      <normaloff>:/imagenes/nuevo.png</normaloff>:/imagenes/nuevo.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>32</width>
+      <height>32</height>
+     </size>
+    </property>
+    <property name="autoRaise">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>50</y>
+      <width>241</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(126, 126, 126);</string>
+    </property>
+    <property name="text">
+     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt; color:#ffffff;&quot;&gt;Radio del pincel&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="wordWrap">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QSlider" name="horizontalSlider">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>70</y>
+      <width>241</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="maximum">
+     <number>120</number>
+    </property>
+    <property name="value">
+     <number>10</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+    <property name="tickPosition">
+     <enum>QSlider::TicksBelow</enum>
+    </property>
+    <property name="tickInterval">
+     <number>10</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>50</y>
+      <width>241</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(126, 126, 126);</string>
+    </property>
+    <property name="text">
+     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt; color:#ffffff;&quot;&gt;Suavizado del pincel&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="wordWrap">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QSlider" name="horizontalSlider_2">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>70</y>
+      <width>241</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="maximum">
+     <number>120</number>
+    </property>
+    <property name="value">
+     <number>10</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+    <property name="tickPosition">
+     <enum>QSlider::TicksBelow</enum>
+    </property>
+    <property name="tickInterval">
+     <number>10</number>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_3">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>0</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="recursos.qrc">
+      <normaloff>:/imagenes/guardar.png</normaloff>:/imagenes/guardar.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>32</width>
+      <height>32</height>
+     </size>
+    </property>
+    <property name="autoRaise">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_4">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>0</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="recursos.qrc">
+      <normaloff>:/imagenes/punto.png</normaloff>:/imagenes/punto.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>32</width>
+      <height>32</height>
+     </size>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
+    <property name="autoExclusive">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_5">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>0</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="recursos.qrc">
+      <normaloff>:/imagenes/linea.png</normaloff>:/imagenes/linea.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>32</width>
+      <height>32</height>
+     </size>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="autoExclusive">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_6">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>0</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="recursos.qrc">
+      <normaloff>:/imagenes/seleccionar.png</normaloff>:/imagenes/seleccionar.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>32</width>
+      <height>32</height>
+     </size>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="autoExclusive">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>500</x>
+      <y>0</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_7">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>0</y>
+      <width>51</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>...</string>
+    </property>
+    <property name="icon">
+     <iconset resource="recursos.qrc">
+      <normaloff>:/imagenes/rectangulo.png</normaloff>:/imagenes/rectangulo.png</iconset>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="checked">
+     <bool>false</bool>
+    </property>
+    <property name="autoExclusive">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_8">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>0</y>
+      <width>51</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>...</string>
+    </property>
+    <property name="icon">
+     <iconset resource="recursos.qrc">
+      <normaloff>:/imagenes/elipse.png</normaloff>:/imagenes/elipse.png</iconset>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="autoExclusive">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_9">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>0</y>
+      <width>51</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Arco Iris</string>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="autoExclusive">
+     <bool>true</bool>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>544</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuArchivo">
+    <property name="title">
+     <string>Archivo</string>
+    </property>
+    <addaction name="actionNueva_imagen"/>
+    <addaction name="actionAbrir_imagen"/>
+    <addaction name="actionCapturar_de_c_mara"/>
+    <addaction name="actionCaptura_de_v_deo"/>
+    <addaction name="separator"/>
+    <addaction name="actionGuardar"/>
+    <addaction name="actionGuardar_como"/>
+    <addaction name="separator"/>
+    <addaction name="actionCerrar"/>
+    <addaction name="actionSalir"/>
+   </widget>
+   <widget class="QMenu" name="menuEdici_n">
+    <property name="title">
+     <string>Edición</string>
+    </property>
+    <widget class="QMenu" name="menuOpciones">
+     <property name="title">
+      <string>Opciones</string>
+     </property>
+     <addaction name="actionColor_del_pincel"/>
+     <addaction name="actionPreguntar_si_guardar"/>
+    </widget>
+    <widget class="QMenu" name="menuVer_Histograma">
+     <property name="title">
+      <string>Ver Histograma</string>
+     </property>
+     <addaction name="actionGrises"/>
+     <addaction name="actionVrde"/>
+     <addaction name="actionRojo"/>
+     <addaction name="actionAzul"/>
+     <addaction name="separator"/>
+     <addaction name="actionHisograma_2D"/>
+    </widget>
+    <addaction name="actionSeleccionar_todo"/>
+    <addaction name="actionCopiar_a_nueva"/>
+    <addaction name="separator"/>
+    <addaction name="menuVer_Histograma"/>
+    <addaction name="menuOpciones"/>
+    <addaction name="actionInformaci_n"/>
+   </widget>
+   <widget class="QMenu" name="menuHerramientas">
+    <property name="title">
+     <string>Herramientas</string>
+    </property>
+    <addaction name="actionPunto"/>
+    <addaction name="actionLinea"/>
+    <addaction name="actionRect_ngulo"/>
+    <addaction name="actionElipse"/>
+    <addaction name="actionArco_ris"/>
+    <addaction name="actionSeleccionar"/>
+   </widget>
+   <widget class="QMenu" name="menuTransformar">
+    <property name="title">
+     <string>Transformar</string>
+    </property>
+    <widget class="QMenu" name="menuRotar">
+     <property name="title">
+      <string>Rotar</string>
+     </property>
+     <addaction name="actionRotar_90"/>
+     <addaction name="actionRotar_180"/>
+     <addaction name="actionRotar_91"/>
+    </widget>
+    <widget class="QMenu" name="menuEcualizar_histograma">
+     <property name="title">
+      <string>Ecualizar histograma</string>
+     </property>
+     <addaction name="actionCanales_separados"/>
+     <addaction name="actionCanales_conjuntos"/>
+    </widget>
+    <addaction name="actionBrillo_contraste"/>
+    <addaction name="actionMatiz_saturacion_Luminosidad"/>
+    <addaction name="actionInvertir"/>
+    <addaction name="menuRotar"/>
+    <addaction name="actionMedia_ponderada"/>
+    <addaction name="actionEscala_de_Color"/>
+    <addaction name="actionEscala_de_color_Falso"/>
+    <addaction name="actionAjuste_lineal"/>
+    <addaction name="actionPerspectiva"/>
+    <addaction name="menuEcualizar_histograma"/>
+   </widget>
+   <widget class="QMenu" name="menuEfectos">
+    <property name="title">
+     <string>Efectos</string>
+    </property>
+    <widget class="QMenu" name="menuSuavizado">
+     <property name="title">
+      <string>Suavizado</string>
+     </property>
+     <addaction name="actionGausiano"/>
+     <addaction name="actionMedia"/>
+     <addaction name="actionMediana"/>
+    </widget>
+    <addaction name="menuSuavizado"/>
+    <addaction name="actionBajo_Relieve"/>
+    <addaction name="actionPinchar_Estirar"/>
+    <addaction name="actionPerfilar"/>
+   </widget>
+   <widget class="QMenu" name="menuV_deo">
+    <property name="title">
+     <string>Vídeo</string>
+    </property>
+    <widget class="QMenu" name="menuImagen_a_v_deo">
+     <property name="title">
+      <string>Imagen a vídeo</string>
+     </property>
+     <addaction name="actionRotar_imagen"/>
+    </widget>
+    <widget class="QMenu" name="menuV_deo_a_imagen">
+     <property name="title">
+      <string>Vídeo a imagen</string>
+     </property>
+     <addaction name="actionImagen_media"/>
+     <addaction name="actionMovimiento"/>
+    </widget>
+    <addaction name="menuImagen_a_v_deo"/>
+    <addaction name="menuV_deo_a_imagen"/>
+    <addaction name="actionV_deo_a_video"/>
+   </widget>
+   <widget class="QMenu" name="menuAyuda">
+    <property name="title">
+     <string>Ayuda</string>
+    </property>
+    <addaction name="actionAcerca_de"/>
+   </widget>
+   <addaction name="menuArchivo"/>
+   <addaction name="menuEdici_n"/>
+   <addaction name="menuHerramientas"/>
+   <addaction name="menuTransformar"/>
+   <addaction name="menuEfectos"/>
+   <addaction name="menuV_deo"/>
+   <addaction name="menuAyuda"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionNueva_imagen">
+   <property name="text">
+    <string>Nueva imagen...</string>
+   </property>
+  </action>
+  <action name="actionAbrir_imagen">
+   <property name="text">
+    <string>Abrir imagen...</string>
+   </property>
+  </action>
+  <action name="actionGuardar">
+   <property name="text">
+    <string>Guardar</string>
+   </property>
+  </action>
+  <action name="actionGuardar_como">
+   <property name="text">
+    <string>Guardar como...</string>
+   </property>
+  </action>
+  <action name="actionCerrar">
+   <property name="text">
+    <string>Cerrar</string>
+   </property>
+  </action>
+  <action name="actionSalir">
+   <property name="text">
+    <string>Salir</string>
+   </property>
+  </action>
+  <action name="actionPunto">
+   <property name="text">
+    <string>Punto</string>
+   </property>
+  </action>
+  <action name="actionLinea">
+   <property name="text">
+    <string>Línea</string>
+   </property>
+  </action>
+  <action name="actionSeleccionar">
+   <property name="text">
+    <string>Seleccionar</string>
+   </property>
+  </action>
+  <action name="actionSeleccionar_todo">
+   <property name="text">
+    <string>Seleccionar todo</string>
+   </property>
+  </action>
+  <action name="actionColor_del_pincel">
+   <property name="text">
+    <string>Color del pincel...</string>
+   </property>
+  </action>
+  <action name="actionPreguntar_si_guardar">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Preguntar si guardar</string>
+   </property>
+  </action>
+  <action name="actionBrillo_contraste">
+   <property name="text">
+    <string>Brillo/Contraste...</string>
+   </property>
+  </action>
+  <action name="actionInvertir">
+   <property name="text">
+    <string>Invertir</string>
+   </property>
+  </action>
+  <action name="actionRotar_90">
+   <property name="text">
+    <string>Rotar 90º</string>
+   </property>
+  </action>
+  <action name="actionRotar_91">
+   <property name="text">
+    <string>Rotar 270º</string>
+   </property>
+  </action>
+  <action name="actionMedia_ponderada">
+   <property name="text">
+    <string>Media ponderada...</string>
+   </property>
+  </action>
+  <action name="actionRotar_180">
+   <property name="text">
+    <string>Rotar 180º</string>
+   </property>
+  </action>
+  <action name="actionGausiano">
+   <property name="text">
+    <string>Gausiano...</string>
+   </property>
+  </action>
+  <action name="actionMedia">
+   <property name="text">
+    <string>Media...</string>
+   </property>
+  </action>
+  <action name="actionV_deo_a_video">
+   <property name="text">
+    <string>Vídeo a video</string>
+   </property>
+  </action>
+  <action name="actionRotar_imagen">
+   <property name="text">
+    <string>Rotar imagen...</string>
+   </property>
+  </action>
+  <action name="actionAcerca_de">
+   <property name="text">
+    <string>Acerca de...</string>
+   </property>
+  </action>
+  <action name="actionImagen_media">
+   <property name="text">
+    <string>Imagen media...</string>
+   </property>
+  </action>
+  <action name="actionRect_ngulo">
+   <property name="text">
+    <string>Rectángulo</string>
+   </property>
+  </action>
+  <action name="actionElipse">
+   <property name="text">
+    <string>Elipse</string>
+   </property>
+  </action>
+  <action name="actionMediana">
+   <property name="text">
+    <string>Mediana...</string>
+   </property>
+  </action>
+  <action name="actionCopiar_a_nueva">
+   <property name="text">
+    <string>Copiar a nueva</string>
+   </property>
+  </action>
+  <action name="actionCapturar_de_c_mara">
+   <property name="text">
+    <string>Capturar de cámara...</string>
+   </property>
+  </action>
+  <action name="actionArco_ris">
+   <property name="text">
+    <string>Arco Íris</string>
+   </property>
+  </action>
+  <action name="actionGrises">
+   <property name="text">
+    <string>Grises</string>
+   </property>
+  </action>
+  <action name="actionVrde">
+   <property name="text">
+    <string>Verde</string>
+   </property>
+  </action>
+  <action name="actionRojo">
+   <property name="text">
+    <string>Rojo</string>
+   </property>
+  </action>
+  <action name="actionAzul">
+   <property name="text">
+    <string>Azul</string>
+   </property>
+  </action>
+  <action name="actionBajo_Relieve">
+   <property name="text">
+    <string>Bajo Relieve...</string>
+   </property>
+  </action>
+  <action name="actionEscala_de_Color">
+   <property name="text">
+    <string>Escala de color</string>
+   </property>
+  </action>
+  <action name="actionPinchar_Estirar">
+   <property name="text">
+    <string>Pinchar/Estirar...</string>
+   </property>
+  </action>
+  <action name="actionAjuste_lineal">
+   <property name="text">
+    <string>Ajuste lineal...</string>
+   </property>
+  </action>
+  <action name="actionCaptura_de_v_deo">
+   <property name="text">
+    <string>Captura de vídeo...</string>
+   </property>
+  </action>
+  <action name="actionMatiz_saturacion_Luminosidad">
+   <property name="text">
+    <string>Matiz/saturacion/Luminosidad...</string>
+   </property>
+  </action>
+  <action name="actionPerfilar">
+   <property name="text">
+    <string>Perfilar...</string>
+   </property>
+  </action>
+  <action name="actionPerspectiva">
+   <property name="text">
+    <string>Perspectiva...</string>
+   </property>
+  </action>
+  <action name="actionMovimiento">
+   <property name="text">
+    <string>Movimiento...</string>
+   </property>
+  </action>
+  <action name="actionHisograma_2D">
+   <property name="text">
+    <string>Hisograma 2D...</string>
+   </property>
+  </action>
+  <action name="actionInformaci_n">
+   <property name="text">
+    <string>Información</string>
+   </property>
+  </action>
+  <action name="actionEscala_de_color_Falso">
+   <property name="text">
+    <string>Escala de color Falso</string>
+   </property>
+  </action>
+  <action name="actionCanales_separados">
+   <property name="text">
+    <string>Canales separados</string>
+   </property>
+  </action>
+  <action name="actionCanales_conjuntos">
+   <property name="text">
+    <string>Canales conjuntos</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="recursos.qrc"/>
+ </resources>
+ <connections/>
+</ui>
