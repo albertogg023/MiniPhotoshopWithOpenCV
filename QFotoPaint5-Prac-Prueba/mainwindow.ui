@@ -399,6 +399,7 @@ p, li { white-space: pre-wrap; }
      <string>Archivo</string>
     </property>
     <addaction name="actionNueva_imagen"/>
+    <addaction name="actionNuevo_desde_portapapeles"/>
     <addaction name="actionAbrir_imagen"/>
     <addaction name="actionCapturar_de_c_mara"/>
     <addaction name="actionCaptura_de_v_deo"/>
@@ -498,6 +499,7 @@ p, li { white-space: pre-wrap; }
     <addaction name="actionBajo_Relieve"/>
     <addaction name="actionPinchar_Estirar"/>
     <addaction name="actionPerfilar"/>
+    <addaction name="actionBalance_de_blancos"/>
    </widget>
    <widget class="QMenu" name="menuV_deo">
     <property name="title">
@@ -799,6 +801,16 @@ p, li { white-space: pre-wrap; }
   <action name="actionAjuste_lineal_del_hisograma">
    <property name="text">
     <string>Ecualización local...</string>
+   </property>
+  </action>
+  <action name="actionBalance_de_blancos">
+   <property name="text">
+    <string>Balance de blancos</string>
+   </property>
+  </action>
+  <action name="actionNuevo_desde_portapapeles">
+   <property name="text">
+    <string>Nuevo desde portapapeles</string>
    </property>
   </action>
  </widget>

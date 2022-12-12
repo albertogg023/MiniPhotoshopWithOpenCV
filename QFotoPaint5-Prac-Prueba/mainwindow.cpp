@@ -3,6 +3,9 @@
 #include <QFileDialog>
 #include <QColorDialog>
 #include <QMessageBox>
+#include <QClipboard>
+#include <QApplication>
+#include <iostream>
 
 #include <opencv2/opencv.hpp>
 using namespace cv;
@@ -530,7 +533,7 @@ void MainWindow::on_actionModelo_de_color_triggered()
 {
     if(foto_activa()!=-1 && primera_libre()!=-1)
     {
-        ModeloColor m(foto_activa(),primera_libre());
+        ModeloColor m(foto_activa());
         m.exec();
     }
 }
@@ -542,4 +545,20 @@ void MainWindow::on_actionAjuste_lineal_del_hisograma_triggered()
          HistLocal h(foto_activa());
          h.exec();
      }
+}
+
+void MainWindow::on_actionBalance_de_blancos_triggered()
+{
+    if(foto_activa()!=-1 && primera_libre()!=-1)
+        balance_blancos(foto_activa(),primera_libre());
+}
+
+void MainWindow::on_actionNuevo_desde_portapapeles_triggered()
+{
+    QClipboard* clipboard = QApplication::clipboard();
+    QImage image = clipboard->image();
+    if(image.isNull())
+        return;
+    Mat mat(image.height(), image.width(), CV_8UC3,(uchar*)image.bits(),image.bytesPerLine());
+    crear_nueva(primera_libre(),mat);
 }

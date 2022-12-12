@@ -87,6 +87,8 @@ private slots:
     void on_actionEspectro_triggered();
     void on_actionModelo_de_color_triggered();
     void on_actionAjuste_lineal_del_hisograma_triggered();
+    void on_actionBalance_de_blancos_triggered();
+    void on_actionNuevo_desde_portapapeles_triggered();
 };
 
 extern MainWindow *w;

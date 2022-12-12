@@ -1030,27 +1030,32 @@ void generar_espectro(int nfoto, int nres)
 
 //---------------------------------------------------------------------------
 
-void cambiar_modelo(int nfoto,int nres,int modelo)
+void cambiar_modelo(int nfoto,int modelo,bool guardar)
 {
+    Mat res;
     switch (modelo)
     {
     case 0:
-        cvtColor(foto[nfoto].img,foto[nfoto].img,COLOR_BGR2RGB);
+        cvtColor(foto[nfoto].img,res,COLOR_BGR2RGB);
         break;
     case 1:
-        cvtColor(foto[nfoto].img,foto[nfoto].img,COLOR_BGR2HLS);
+        cvtColor(foto[nfoto].img,res,COLOR_BGR2HLS);
         break;
     case 2:
-        cvtColor(foto[nfoto].img,foto[nfoto].img,COLOR_BGR2HSV);
+        cvtColor(foto[nfoto].img,res,COLOR_BGR2HSV);
         break;
     case 3:
-        cvtColor(foto[nfoto].img,foto[nfoto].img,COLOR_BGR2XYZ);
+        cvtColor(foto[nfoto].img,res,COLOR_BGR2XYZ);
         break;
     case 4:
-        cvtColor(foto[nfoto].img,foto[nfoto].img,COLOR_BGR2YUV);
+        cvtColor(foto[nfoto].img,res,COLOR_BGR2YUV);
         break;
     }
-    crear_nueva(nres,foto[nfoto].img);
+    imshow(foto[nfoto].nombre,res);
+    if(guardar){
+        res.copyTo(foto[nfoto].img);
+        foto[nfoto].modificada=true;
+    }
 
 }
 
@@ -1080,6 +1085,29 @@ void ecualizacion_local_hist(int nfoto, int radio,bool guardar)
         res.copyTo(foto[nfoto].img);
         foto[nfoto].modificada=true;
     }
+}
+
+//---------------------------------------------------------------------------
+
+void balance_blancos(int nfoto, int nres)
+{
+    Mat res,espacio_YUV;
+    cvtColor(foto[nfoto].img,espacio_YUV,COLOR_BGR2YUV);
+    vector<Mat> yuv_channels(3);
+    split(espacio_YUV, yuv_channels);
+    Scalar media_u=mean(yuv_channels[1]);
+    Scalar media_y=mean(yuv_channels[2]);
+    double modificar_u=128.0-media_u.val[0];
+    double modificar_y=128.0-media_y.val[0];
+    for(int i=0;i<espacio_YUV.total();i++)
+    {
+        yuv_channels[1].at<float>(i)+=modificar_u;
+        yuv_channels[2].at<float>(i)+=modificar_y;
+
+    }
+    merge(yuv_channels,espacio_YUV);
+    cvtColor(espacio_YUV,res,COLOR_YUV2BGR);
+    crear_nueva(nres,res);
 }
 
 //---------------------------------------------------------------------------

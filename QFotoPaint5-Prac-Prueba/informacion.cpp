@@ -10,7 +10,6 @@ Informacion::Informacion(Mat img,QWidget *parent) :
     ui(new Ui::Informacion)
 {
     Scalar valor=mean(img); //Se calcula la media y se obtiene el scalar
-    printf("Color Medio:%f",valor.val[0]); //Se obtenie el valor medio del Scalar
     ui->setupUi(this);
     ui->lineEdit->setText(QString::number(img.total()));
     ui->lineEdit_2->setText(QString::number(img.depth()));

@@ -12,7 +12,7 @@ class ModeloColor : public QDialog
     Q_OBJECT
 
 public:
-    explicit ModeloColor(int nfoto, int nres,QWidget *parent = nullptr);
+    explicit ModeloColor(int nfoto,QWidget *parent = nullptr);
     ~ModeloColor();
 
 private slots:
@@ -26,10 +26,16 @@ private slots:
 
     void on_radioButton_5_clicked();
 
+    void on_ModeloColor_rejected();
+
+    void on_pushButton_clicked();
+
+    void on_pushButton_2_clicked();
+
 private:
     Ui::ModeloColor *ui;
     int foto;
-    int res;
+    int modelo_actual;
 };
 
 #endif // MODELOCOLOR_H

@@ -2,13 +2,13 @@
 #include "ui_modelocolor.h"
 #include "imagenes.h"
 
-ModeloColor::ModeloColor(int nfoto,int nres,QWidget *parent) :
+ModeloColor::ModeloColor(int nfoto,QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ModeloColor)
 {
     ui->setupUi(this);
     foto=nfoto;
-    res=nres;
+    modelo_actual=0;
 }
 
 ModeloColor::~ModeloColor()
@@ -18,25 +18,46 @@ ModeloColor::~ModeloColor()
 
 void ModeloColor::on_radioButton_clicked()
 {
-    cambiar_modelo(foto,res,0);
+    cambiar_modelo(foto,0);
+    modelo_actual=0;
 }
 
 void ModeloColor::on_radioButton_2_clicked()
 {
-    cambiar_modelo(foto,res,1);
+    cambiar_modelo(foto,1);
+    modelo_actual=1;
 }
 
 void ModeloColor::on_radioButton_3_clicked()
 {
-    cambiar_modelo(foto,res,2);
+    cambiar_modelo(foto,2);
+    modelo_actual=2;
 }
 
 void ModeloColor::on_radioButton_4_clicked()
 {
-    cambiar_modelo(foto,res,3);
+    cambiar_modelo(foto,3);
+    modelo_actual=3;
 }
 
 void ModeloColor::on_radioButton_5_clicked()
 {
-    cambiar_modelo(foto,res,4);
+    cambiar_modelo(foto,4);
+    modelo_actual=4;
+}
+
+void ModeloColor::on_ModeloColor_rejected()
+{
+     mostrar(foto);
+}
+
+void ModeloColor::on_pushButton_clicked()
+{
+    cambiar_modelo(foto,modelo_actual,true);
+}
+
+void ModeloColor::on_pushButton_2_clicked()
+{
+    mostrar(foto);
+    destroyWindow("Modelo de color");
 }
