@@ -42,7 +42,7 @@
     <number>1</number>
    </property>
    <property name="maximum">
-    <number>100</number>
+    <number>200</number>
    </property>
    <property name="value">
     <number>1</number>
@@ -90,7 +90,7 @@ color: rgb(255, 255, 255);</string>
     <number>1</number>
    </property>
    <property name="maximum">
-    <number>100</number>
+    <number>200</number>
    </property>
    <property name="value">
     <number>1</number>

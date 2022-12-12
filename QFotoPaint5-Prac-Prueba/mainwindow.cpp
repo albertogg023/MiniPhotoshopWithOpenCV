@@ -27,6 +27,7 @@ using namespace cv;
 #include "movimiento.h"
 #include "informacion.h"
 #include "modelocolor.h"
+#include "histlocal.h"
 
 
 QString FiltroImagen = "Todos los formatos (*.jpg *.jpeg *.jpe .jp2 *.tif *.tiff *.png *.gif *.bmp *.dib *.webp *.ppm);;Archivos JPG (*.jpg *.jpeg *.jpe);;Archivos TIF (*.tif *.tiff);;Archivos PNG (*.png);;Archivos GIF (*.gif);;Archivos BMP (*.bmp *.dib);;Otros (*.*)";
@@ -536,8 +537,9 @@ void MainWindow::on_actionModelo_de_color_triggered()
 
 void MainWindow::on_actionAjuste_lineal_del_hisograma_triggered()
 {
-     if(foto_activa()!=-1 && primera_libre()!=-1)
+     if(foto_activa()!=-1)
      {
-         ecualizacion_local_hist(foto_activa(),primera_libre(),4);
+         HistLocal h(foto_activa());
+         h.exec();
      }
 }

@@ -195,7 +195,7 @@ void generar_espectro(int nfoto, int nres);
 
 void cambiar_modelo(int nfoto,int nres,int modelo);
 
-void ecualizacion_local_hist(int nfoto,int nres, int radio);
+void ecualizacion_local_hist(int nfoto, int radio,bool guradar=false);
 
 string Lt1(string cadena);
 // Convertir una cadena de UTF8 a Latin1

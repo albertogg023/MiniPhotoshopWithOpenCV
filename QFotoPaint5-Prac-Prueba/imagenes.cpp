@@ -1056,7 +1056,7 @@ void cambiar_modelo(int nfoto,int nres,int modelo)
 
 //---------------------------------------------------------------------------
 
-void ecualizacion_local_hist(int nfoto,int nres, int radio)
+void ecualizacion_local_hist(int nfoto, int radio,bool guardar)
 {
     // Crear un objeto de la clase cv::Ptr<cv::CLAHE>
     cv::Ptr<cv::CLAHE> clahe = cv::createCLAHE();
@@ -1075,7 +1075,11 @@ void ecualizacion_local_hist(int nfoto,int nres, int radio)
     Mat res;
     cvtColor(lab_image,res,COLOR_Lab2BGR);
     // Mostrar la imagen ecualizada
-    crear_nueva(nres,res);
+    imshow(foto[nfoto].nombre,res);
+    if(guardar){
+        res.copyTo(foto[nfoto].img);
+        foto[nfoto].modificada=true;
+    }
 }
 
 //---------------------------------------------------------------------------
