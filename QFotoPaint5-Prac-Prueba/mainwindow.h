@@ -89,6 +89,7 @@ private slots:
     void on_actionAjuste_lineal_del_hisograma_triggered();
     void on_actionBalance_de_blancos_triggered();
     void on_actionNuevo_desde_portapapeles_triggered();
+    void on_actionCurva_tonal_triggered();
 };
 
 extern MainWindow *w;

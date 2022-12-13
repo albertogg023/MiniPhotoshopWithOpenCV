@@ -334,7 +334,7 @@ void MainWindow::on_actionRect_ngulo_triggered()
 
 void MainWindow::on_toolButton_7_clicked()
 {
-   herr_actual= HER_RECTANGULO;
+    herr_actual= HER_RECTANGULO;
 }
 
 void MainWindow::on_toolButton_8_clicked()
@@ -359,9 +359,9 @@ void MainWindow::on_actionMediana_triggered()
 void MainWindow::on_actionCopiar_a_nueva_triggered()
 {
     if(foto_activa()!=-1 && primera_libre()!=-1){
-       int num= foto_activa();
-       Mat imgres=foto[num].img(foto[num].roi).clone();
-       crear_nueva(primera_libre(),imgres);
+        int num= foto_activa();
+        Mat imgres=foto[num].img(foto[num].roi).clone();
+        crear_nueva(primera_libre(),imgres);
     }
 }
 
@@ -428,15 +428,15 @@ void MainWindow::on_actionPinchar_Estirar_triggered()
 {
     if(foto_activa()!=1){
         pinchar_estirar pe(foto_activa());
-    pe.exec();
+        pe.exec();
     }
 }
 
 void MainWindow::on_actionAjuste_lineal_triggered()
 {
     if(foto_activa() != -1){
-       Ajustelineal al(foto_activa());
-       al.exec();
+        Ajustelineal al(foto_activa());
+        al.exec();
     }
 }
 
@@ -480,8 +480,8 @@ void MainWindow::on_actionMovimiento_triggered()
         QString nombre=QFileDialog::getOpenFileName();
         if(!nombre.isEmpty()){
             Movimiento mv(nombre,primera_libre());
-           if(mv.isOpened())
-               mv.exec();
+            if(mv.isOpened())
+                mv.exec();
         }
     }
 
@@ -506,7 +506,7 @@ void MainWindow::on_actionInformaci_n_triggered()
 
 void MainWindow::on_actionEscala_de_color_Falso_triggered()
 {
-     if(foto_activa()!=-1 && primera_libre()!=-1)
+    if(foto_activa()!=-1 && primera_libre()!=-1)
         escala_color_falso(foto_activa(),primera_libre());
 }
 
@@ -540,11 +540,11 @@ void MainWindow::on_actionModelo_de_color_triggered()
 
 void MainWindow::on_actionAjuste_lineal_del_hisograma_triggered()
 {
-     if(foto_activa()!=-1)
-     {
-         HistLocal h(foto_activa());
-         h.exec();
-     }
+    if(foto_activa()!=-1)
+    {
+        HistLocal h(foto_activa());
+        h.exec();
+    }
 }
 
 void MainWindow::on_actionBalance_de_blancos_triggered()
@@ -559,6 +559,48 @@ void MainWindow::on_actionNuevo_desde_portapapeles_triggered()
     QImage image = clipboard->image();
     if(image.isNull())
         return;
-    Mat mat(image.height(), image.width(), CV_8UC3,(uchar*)image.bits(),image.bytesPerLine());
-    crear_nueva(primera_libre(),mat);
+    switch(image.format())
+    {
+        case QImage::Format_ARGB32:
+        case QImage::Format_ARGB32_Premultiplied:
+        {
+            Mat mat(image.height(), image.width(), CV_8UC4,(uchar*)image.bits(),image.bytesPerLine());
+            Mat sinAlpha;
+            cvtColor(mat,sinAlpha,COLOR_BGRA2BGR);
+            crear_nueva(primera_libre(),sinAlpha);
+            break;
+        }
+        case QImage::Format_Grayscale8:
+        case QImage::Format_Indexed8:
+        {
+            Mat gris(image.height(), image.width(), CV_8UC1,(uchar*)image.bits(),image.bytesPerLine());
+            Mat mat
+                    cvtColor(gris,mat,COLOR_GRAY2BGR);
+            crear_nueva(primera_libre(),mat);
+            break;
+        }
+        case QImage::Format_RGB32:
+        {
+            Mat mat(image.height(), image.width(), CV_8UC4,(uchar*)image.bits(),image.bytesPerLine());
+            Mat sinAlpha;
+            cvtColor(mat,sinAlpha,COLOR_BGRA2BGR);
+            crear_nueva(primera_libre(),sinAlpha);
+            break;
+        }
+        case QImage::Format_RGB888:
+        {
+            Mat mat(image.height(), image.width(), CV_8UC3,(uchar*)image.bits(),image.bytesPerLine());
+            Mat reves;
+            cvtColor(mat,reves,COLOR_RGB2BGR);
+            crear_nueva(primera_libre(),reves);
+            break;
+        }
+
+    }
+
+}
+
+void MainWindow::on_actionCurva_tonal_triggered()
+{
+
 }

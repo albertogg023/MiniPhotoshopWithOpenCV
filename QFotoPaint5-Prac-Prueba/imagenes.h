@@ -199,6 +199,8 @@ void ecualizacion_local_hist(int nfoto, int radio,bool guardar=false);
 
 void balance_blancos(int nfoto, int nres);
 
+void curva_tonal(int nfoto,int a, int b, bool guardar=false);
+
 string Lt1(string cadena);
 // Convertir una cadena de UTF8 a Latin1
 
