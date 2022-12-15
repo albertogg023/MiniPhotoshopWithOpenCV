@@ -90,6 +90,8 @@ private slots:
     void on_actionBalance_de_blancos_triggered();
     void on_actionNuevo_desde_portapapeles_triggered();
     void on_actionCurva_tonal_triggered();
+    void on_actionCopiar_a_portapapeles_triggered();
+    void on_actionAjustar_rojo_verde_azul_2_triggered();
 };
 
 extern MainWindow *w;

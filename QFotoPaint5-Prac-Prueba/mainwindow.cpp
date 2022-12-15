@@ -31,6 +31,7 @@ using namespace cv;
 #include "informacion.h"
 #include "modelocolor.h"
 #include "histlocal.h"
+#include "ajustarcanales.h"
 
 
 QString FiltroImagen = "Todos los formatos (*.jpg *.jpeg *.jpe .jp2 *.tif *.tiff *.png *.gif *.bmp *.dib *.webp *.ppm);;Archivos JPG (*.jpg *.jpeg *.jpe);;Archivos TIF (*.tif *.tiff);;Archivos PNG (*.png);;Archivos GIF (*.gif);;Archivos BMP (*.bmp *.dib);;Otros (*.*)";
@@ -561,40 +562,40 @@ void MainWindow::on_actionNuevo_desde_portapapeles_triggered()
         return;
     switch(image.format())
     {
-        case QImage::Format_ARGB32:
-        case QImage::Format_ARGB32_Premultiplied:
-        {
-            Mat mat(image.height(), image.width(), CV_8UC4,(uchar*)image.bits(),image.bytesPerLine());
-            Mat sinAlpha;
-            cvtColor(mat,sinAlpha,COLOR_BGRA2BGR);
-            crear_nueva(primera_libre(),sinAlpha);
-            break;
-        }
-        case QImage::Format_Grayscale8:
-        case QImage::Format_Indexed8:
-        {
-            Mat gris(image.height(), image.width(), CV_8UC1,(uchar*)image.bits(),image.bytesPerLine());
-            Mat mat
-                    cvtColor(gris,mat,COLOR_GRAY2BGR);
-            crear_nueva(primera_libre(),mat);
-            break;
-        }
-        case QImage::Format_RGB32:
-        {
-            Mat mat(image.height(), image.width(), CV_8UC4,(uchar*)image.bits(),image.bytesPerLine());
-            Mat sinAlpha;
-            cvtColor(mat,sinAlpha,COLOR_BGRA2BGR);
-            crear_nueva(primera_libre(),sinAlpha);
-            break;
-        }
-        case QImage::Format_RGB888:
-        {
-            Mat mat(image.height(), image.width(), CV_8UC3,(uchar*)image.bits(),image.bytesPerLine());
-            Mat reves;
-            cvtColor(mat,reves,COLOR_RGB2BGR);
-            crear_nueva(primera_libre(),reves);
-            break;
-        }
+    case QImage::Format_ARGB32:
+    case QImage::Format_ARGB32_Premultiplied:
+    {
+        Mat mat(image.height(), image.width(), CV_8UC4,(uchar*)image.bits(),image.bytesPerLine());
+        Mat sinAlpha;
+        cvtColor(mat,sinAlpha,COLOR_BGRA2BGR);
+        crear_nueva(primera_libre(),sinAlpha);
+        break;
+    }
+    case QImage::Format_Grayscale8:
+    case QImage::Format_Indexed8:
+    {
+        Mat gris(image.height(), image.width(), CV_8UC1,(uchar*)image.bits(),image.bytesPerLine());
+        Mat mat;
+        cvtColor(gris,mat,COLOR_GRAY2BGR);
+        crear_nueva(primera_libre(),mat);
+        break;
+    }
+    case QImage::Format_RGB32:
+    {
+        Mat mat(image.height(), image.width(), CV_8UC4,(uchar*)image.bits(),image.bytesPerLine());
+        Mat sinAlpha;
+        cvtColor(mat,sinAlpha,COLOR_BGRA2BGR);
+        crear_nueva(primera_libre(),sinAlpha);
+        break;
+    }
+    case QImage::Format_RGB888:
+    {
+        Mat mat(image.height(), image.width(), CV_8UC3,(uchar*)image.bits(),image.bytesPerLine());
+        Mat reves;
+        cvtColor(mat,reves,COLOR_RGB2BGR);
+        crear_nueva(primera_libre(),reves);
+        break;
+    }
 
     }
 
@@ -602,5 +603,46 @@ void MainWindow::on_actionNuevo_desde_portapapeles_triggered()
 
 void MainWindow::on_actionCurva_tonal_triggered()
 {
+
+}
+
+void MainWindow::on_actionCopiar_a_portapapeles_triggered()
+{
+    if(foto_activa()!=-1){
+        int num= foto_activa();
+        Mat imgres=foto[num].img(foto[num].roi).clone();
+
+        if(imgres.type()==CV_8UC1)
+        {
+            //Se crea una Qimagen con escala de grises
+            QImage img(imgres.data, imgres.cols, imgres.rows, imgres.step, QImage::Format_Indexed8);
+            //Se crea clipboard
+            QClipboard* clipboard = QApplication::clipboard();
+            //Se añade al portapapeles
+            clipboard->setImage(img);
+        }
+
+        else if(imgres.type()==CV_8UC3)
+        {
+            Mat img_clipboard;
+            cvtColor(imgres, img_clipboard, COLOR_BGR2RGB);
+
+            // Crea una imagen QImage a partir de la imagen de OpenCV RGB
+            QImage img(img_clipboard.data,img_clipboard.cols, img_clipboard.rows,img_clipboard.step, QImage::Format_RGB888);
+            //Se crea clipboard
+            QClipboard* clipboard = QApplication::clipboard();
+            //Se añade al portapapeles
+            clipboard->setImage(img);
+        }
+
+    }
+}
+
+void MainWindow::on_actionAjustar_rojo_verde_azul_2_triggered()
+{
+    if(foto_activa()!=-1){
+        AjustarCanales a(foto_activa());
+        a.exec();
+    }
 
 }

@@ -51,13 +51,10 @@ void ModeloColor::on_ModeloColor_rejected()
      mostrar(foto);
 }
 
-void ModeloColor::on_pushButton_clicked()
+void ModeloColor::on_ModeloColor_accepted()
 {
     cambiar_modelo(foto,modelo_actual,true);
+     mostrar(foto);
 }
 
-void ModeloColor::on_pushButton_2_clicked()
-{
-    mostrar(foto);
-    destroyWindow("Modelo de color");
-}
+

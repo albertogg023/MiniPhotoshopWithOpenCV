@@ -28,9 +28,8 @@ private slots:
 
     void on_ModeloColor_rejected();
 
-    void on_pushButton_clicked();
+    void on_ModeloColor_accepted();
 
-    void on_pushButton_2_clicked();
 
 private:
     Ui::ModeloColor *ui;

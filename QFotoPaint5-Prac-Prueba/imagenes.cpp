@@ -1099,15 +1099,39 @@ void balance_blancos(int nfoto, int nres)
     Scalar media_y=mean(yuv_channels[2]);
     double modificar_u=128.0-media_u.val[0];
     double modificar_y=128.0-media_y.val[0];
-    for(int i=0;i<espacio_YUV.total();i++)
-    {
-        yuv_channels[1].at<float>(i)+=modificar_u;
-        yuv_channels[2].at<float>(i)+=modificar_y;
-
-    }
-    merge(yuv_channels,espacio_YUV);
+    espacio_YUV+=Scalar(0,modificar_u,modificar_y);
     cvtColor(espacio_YUV,res,COLOR_YUV2BGR);
     crear_nueva(nres,res);
+}
+
+//---------------------------------------------------------------------------
+
+void ajustar_color_canales(int nfoto, int constante,int opcion,bool guardar)
+{
+    if(foto[nfoto].img.type()==CV_8UC3)
+    {
+        if(opcion==0)
+        {
+
+            Mat res=foto[nfoto].img+Scalar(constante,constante,constante);
+            imshow(foto[nfoto].nombre,res);
+            if(guardar){
+                res.copyTo(foto[nfoto].img);
+                foto[nfoto].modificada=true;
+            }
+
+        }
+        else {
+            Mat res=foto[nfoto].img.mul(Scalar(constante,constante,constante));
+            imshow(foto[nfoto].nombre,res);
+            if(guardar){
+                res.copyTo(foto[nfoto].img);
+                foto[nfoto].modificada=true;
+            }
+        }
+    }
+
+
 }
 
 //---------------------------------------------------------------------------
