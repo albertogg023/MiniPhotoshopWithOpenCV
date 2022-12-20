@@ -1063,7 +1063,6 @@ void ecualizacion_local_hist(int nfoto, int radio,bool guardar)
     // Aplicar la ecualización a la imagen original
     Mat lab_image;
     cvtColor(foto[nfoto].img,lab_image,COLOR_BGR2Lab);
-    // Extract the L channel
     vector<Mat> lab_channels(3);
     split(lab_image, lab_channels);  //Sacamos los canales
     clahe->apply(lab_channels[0], lab_channels[0]); //Aplicamos la ecualización local para el canal l
