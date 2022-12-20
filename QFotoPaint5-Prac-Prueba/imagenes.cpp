@@ -1103,7 +1103,6 @@ void ajustar_color_canales(int nfoto, int constante,int opcion,bool guardar)
 
     if(opcion==0)
     {
-
         Mat res=foto[nfoto].img+Scalar(constante,constante,constante);
         imshow(foto[nfoto].nombre,res);
         if(guardar){
@@ -1120,8 +1119,6 @@ void ajustar_color_canales(int nfoto, int constante,int opcion,bool guardar)
             foto[nfoto].modificada=true;
         }
     }
-
-
 
 }
 
