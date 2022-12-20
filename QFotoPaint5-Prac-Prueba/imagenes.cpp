@@ -589,7 +589,7 @@ void callback (int event, int x, int y, int flags, void *_nfoto)
 
         // 2.7. Herramienta Rellenar
     case HER_RELLENAR:
-         if (event==EVENT_LBUTTONUP)
+         if (event==EVENT_LBUTTONUP || event==EVENT_MOUSEMOVE)
              cb_rellenar(factual);
         else
              ninguna_accion(factual,x,y);
