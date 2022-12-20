@@ -1013,7 +1013,7 @@ void generar_espectro(int nfoto, int nres)
     q0.copyTo(tmp);
     q3.copyTo(q0);
     tmp.copyTo(q3);
-    q1.copyTo(tmp);                    // swap quadrant (Esquina superior derecha con Esquina inferior izquerda)
+    q1.copyTo(tmp);                    // cambiar cuadrantes (Esquina superior derecha con Esquina inferior izquerda)
     q2.copyTo(q1);
     tmp.copyTo(q2);
     crear_nueva(nres,res);
