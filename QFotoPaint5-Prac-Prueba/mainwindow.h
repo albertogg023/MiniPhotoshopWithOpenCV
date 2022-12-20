@@ -79,7 +79,6 @@ private slots:
     void on_actionPerfilar_triggered();
     void on_actionPerspectiva_triggered();
     void on_actionMovimiento_triggered();
-    void on_actionHisograma_2D_triggered();
     void on_actionInformaci_n_triggered();
     void on_actionEscala_de_color_Falso_triggered();
     void on_actionCanales_separados_triggered();
@@ -92,6 +91,8 @@ private slots:
     void on_actionCurva_tonal_triggered();
     void on_actionCopiar_a_portapapeles_triggered();
     void on_actionAjustar_rojo_verde_azul_2_triggered();
+    void on_toolButton_10_clicked();
+    void on_actionRellenar_triggered();
 };
 
 extern MainWindow *w;

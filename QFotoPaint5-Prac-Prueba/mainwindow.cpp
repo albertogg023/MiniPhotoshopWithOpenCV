@@ -488,13 +488,6 @@ void MainWindow::on_actionMovimiento_triggered()
 
 }
 
-void MainWindow::on_actionHisograma_2D_triggered()
-{
-    if(foto_activa()!=1 && primera_libre()!=-1){
-        ver_histograma2D(foto_activa(),primera_libre(),2,1);
-    }
-}
-
 void MainWindow::on_actionInformaci_n_triggered()
 {
     if(foto_activa()!=1){
@@ -645,4 +638,15 @@ void MainWindow::on_actionAjustar_rojo_verde_azul_2_triggered()
         a.exec();
     }
 
+}
+
+void MainWindow::on_toolButton_10_clicked()
+{
+    herr_actual=HER_RELLENAR;
+}
+
+void MainWindow::on_actionRellenar_triggered()
+{
+    herr_actual=HER_RELLENAR;
+    ui->toolButton_10->setChecked(true);
 }

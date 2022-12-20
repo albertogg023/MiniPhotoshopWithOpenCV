@@ -104,6 +104,7 @@ DISTFILES += \
     imagenes/abrir.png \
     imagenes/arena.jpg \
     imagenes/cielo.jpg \
+    imagenes/curvatonal.png \
     imagenes/elipse.png \
     imagenes/guardar.png \
     imagenes/histbase.png \

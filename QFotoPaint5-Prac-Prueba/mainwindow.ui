@@ -384,6 +384,25 @@ p, li { white-space: pre-wrap; }
      <bool>true</bool>
     </property>
    </widget>
+   <widget class="QToolButton" name="toolButton_10">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>0</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Fill</string>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="autoExclusive">
+     <bool>true</bool>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -430,7 +449,6 @@ p, li { white-space: pre-wrap; }
      <addaction name="actionRojo"/>
      <addaction name="actionAzul"/>
      <addaction name="separator"/>
-     <addaction name="actionHisograma_2D"/>
     </widget>
     <addaction name="actionSeleccionar_todo"/>
     <addaction name="actionCopiar_a_nueva"/>
@@ -450,6 +468,7 @@ p, li { white-space: pre-wrap; }
     <addaction name="actionElipse"/>
     <addaction name="actionArco_ris"/>
     <addaction name="actionSeleccionar"/>
+    <addaction name="actionRellenar"/>
    </widget>
    <widget class="QMenu" name="menuTransformar">
     <property name="title">
@@ -839,6 +858,11 @@ p, li { white-space: pre-wrap; }
   <action name="actionAjustar_rojo_verde_azul_2">
    <property name="text">
     <string>Ajustar rojo/verde/azul...</string>
+   </property>
+  </action>
+  <action name="actionRellenar">
+   <property name="text">
+    <string>Rellenar</string>
    </property>
   </action>
  </widget>

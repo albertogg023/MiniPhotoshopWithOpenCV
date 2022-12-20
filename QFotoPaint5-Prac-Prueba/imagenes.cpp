@@ -495,6 +495,18 @@ void cb_ver_seleccion (int factual, int x, int y, bool foto_roi)
 
 //---------------------------------------------------------------------------
 
+void cb_rellenar (int factual)
+{
+    Mat res=foto[factual].img.clone();
+    Scalar lo=Scalar(radio_pincel,radio_pincel,radio_pincel);
+    Scalar up=Scalar(radio_pincel,radio_pincel,radio_pincel);
+    Scalar newVal=Scalar(color_pincel.val[0],color_pincel.val[1],color_pincel.val[2]);
+    floodFill(res,Point(downx,downy),newVal,NULL,lo,up,FLOODFILL_FIXED_RANGE);
+    imshow(foto[factual].nombre, res);
+}
+
+//---------------------------------------------------------------------------
+
 void callback (int event, int x, int y, int flags, void *_nfoto)
 {
     int factual= reinterpret_cast<int>(_nfoto);
@@ -573,6 +585,14 @@ void callback (int event, int x, int y, int flags, void *_nfoto)
             cb_arco_iris(factual, x, y);
         else
             ninguna_accion(factual, x, y);
+        break;
+
+        // 2.7. Herramienta Rellenar
+    case HER_RELLENAR:
+         if (event==EVENT_LBUTTONUP)
+             cb_rellenar(factual);
+        else
+             ninguna_accion(factual,x,y);
         break;
     }
 
@@ -783,35 +803,6 @@ void ver_histograma(int nfoto,int nres, int canal)
         rectangle(imghist,Point(3+i*391.0/256,185),Point(3+(i+1)*391.0/256,poshist),
                   CV_RGB(canal==2?255:0,canal==1?255:0,canal==0?255:0),-1);
     }
-    crear_nueva(nres,imghist);
-
-}
-
-
-//---------------------------------------------------------------------------
-
-void ver_histograma2D(int nfoto,int nres,int canal1,int canal2,int numceldas)
-{
-    QImage imq= QImage(":/imagenes/histbase.png");
-    Mat imghist(imq.height(),imq.width(),CV_8UC4,imq.scanLine(0));
-    cvtColor(imghist, imghist, COLOR_RGBA2RGB);
-    Mat hist;
-    int canales[2]= {canal1,canal2};
-    int bins[2]= {numceldas,numceldas};
-    float rango[2]= {0, 256};
-    const float *rangos[]= {rango,rango};
-    double vmin,vmax;
-    calcHist(&(foto[nfoto].img), 1, canales, noArray(), hist, 2, bins, rangos);
-
-    minMaxLoc(hist,&vmin,&vmax);
-    for (int r= 0; r<numceldas; r++)
-        for (int g= 0; g<numceldas; g++){
-            float poshist= 185-hist.at<float>(r, g)/vmax*182;
-            rectangle(imghist,Point(3+r*391.0/256,185),Point(3+(g+1)*391.0/256,poshist),
-                      CV_RGB(canal1==2?255:0,canal1==1?255:0,canal1==0?255:0),-1);
-        }
-
-
     crear_nueva(nres,imghist);
 
 }
