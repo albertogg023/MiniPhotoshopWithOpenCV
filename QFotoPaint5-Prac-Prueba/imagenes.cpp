@@ -1005,15 +1005,15 @@ void generar_espectro(int nfoto, int nres)
     imagenDFT.convertTo(res, CV_8UC1, -1, 255);
     int cx = res.cols/2;
     int cy = res.rows/2;
-    Mat q0(res, Rect(0, 0, cx, cy));   // Top-Left - Create a ROI per quadrant
-    Mat q1(res, Rect(cx, 0, cx, cy));  // Top-Right
-    Mat q2(res, Rect(0, cy, cx, cy));  // Bottom-Left
-    Mat q3(res, Rect(cx, cy, cx, cy)); // Bottom-Right
-    Mat tmp;                           // swap quadrants (Top-Left with Bottom-Right)
+    Mat q0(res, Rect(0, 0, cx, cy));   // Esquina superior izquierda
+    Mat q1(res, Rect(cx, 0, cx, cy));  // Esquina superior derecha
+    Mat q2(res, Rect(0, cy, cx, cy));  // Esquina inferior izquerda
+    Mat q3(res, Rect(cx, cy, cx, cy)); // Esquina inferior derecha
+    Mat tmp;                           // Cambiar cuadrantes (Esquina superior izquierda con Esquina inferior derecha)
     q0.copyTo(tmp);
     q3.copyTo(q0);
     tmp.copyTo(q3);
-    q1.copyTo(tmp);                    // swap quadrant (Top-Right with Bottom-Left)
+    q1.copyTo(tmp);                    // swap quadrant (Esquina superior derecha con Esquina inferior izquerda)
     q2.copyTo(q1);
     tmp.copyTo(q2);
     crear_nueva(nres,res);
