@@ -28,11 +28,21 @@ private slots:
 
     void on_AjustarCanales_rejected();
 
+    void on_horizontalSlider_3_valueChanged(int value);
+
+    void on_horizontalSlider_4_valueChanged(int value);
+
+    void on_spinBox_3_valueChanged(int arg1);
+
+    void on_spinBox_4_valueChanged(int arg1);
+
 private:
     Ui::AjustarCanales *ui;
     int nfoto;
     int opcion;
-    int valor;
+    int azul;
+    int rojo;
+    int verde;
 };
 
 #endif // AJUSTARCANALES_H

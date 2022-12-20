@@ -19,7 +19,8 @@ HistLocal::~HistLocal()
 void HistLocal::on_horizontalSlider_2_valueChanged(int value)
 {
     ui->spinBox_2->setValue(value);
-    ecualizacion_local_hist(nfoto,value);
+    radio=value;
+    ecualizacion_local_hist(nfoto,radio);
 }
 
 void HistLocal::on_spinBox_2_valueChanged(int arg1)

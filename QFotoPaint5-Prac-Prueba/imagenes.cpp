@@ -1096,14 +1096,14 @@ void balance_blancos(int nfoto, int nres)
 
 //---------------------------------------------------------------------------
 
-void ajustar_color_canales(int nfoto, int constante,int opcion,bool guardar)
+void ajustar_color_canales(int nfoto, int azul,int verde,int rojo, int opcion,bool guardar)
 {
     if(foto[nfoto].img.type()==CV_8UC1)
         cvtColor(foto[nfoto].img,foto[nfoto].img,COLOR_GRAY2BGR);
 
     if(opcion==0)
     {
-        Mat res=foto[nfoto].img+Scalar(constante,constante,constante);
+        Mat res=foto[nfoto].img+Scalar(azul,verde,rojo);
         imshow(foto[nfoto].nombre,res);
         if(guardar){
             res.copyTo(foto[nfoto].img);
@@ -1112,7 +1112,7 @@ void ajustar_color_canales(int nfoto, int constante,int opcion,bool guardar)
 
     }
     else {
-        Mat res=foto[nfoto].img.mul(Scalar(constante,constante,constante));
+        Mat res=foto[nfoto].img.mul(Scalar(azul,verde,rojo));
         imshow(foto[nfoto].nombre,res);
         if(guardar){
             res.copyTo(foto[nfoto].img);

@@ -201,7 +201,7 @@ void balance_blancos(int nfoto, int nres);
 
 void curva_tonal(int nfoto,int a, int b, bool guardar=false);
 
-void ajustar_color_canales(int nfoto, int constante, int opcion,bool guardar=false);
+void ajustar_color_canales(int nfoto, int azul,int verde,int rojo, int opcion,bool guardar=false);
 
 string Lt1(string cadena);
 // Convertir una cadena de UTF8 a Latin1
