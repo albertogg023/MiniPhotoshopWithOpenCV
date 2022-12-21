@@ -83,51 +83,51 @@
     <rect>
      <x>70</x>
      <y>50</y>
-     <width>55</width>
+     <width>61</width>
      <height>16</height>
     </rect>
    </property>
    <property name="text">
-    <string>Tamaño</string>
+    <string>Tamaño:</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>54</x>
+     <x>50</x>
      <y>90</y>
-     <width>71</width>
+     <width>91</width>
      <height>20</height>
     </rect>
    </property>
    <property name="text">
-    <string>Profundidad</string>
+    <string>Profundidad:</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>70</x>
+     <x>20</x>
      <y>160</y>
-     <width>55</width>
-     <height>16</height>
+     <width>111</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="text">
-    <string>Memoria</string>
+    <string>Memoria (bytes):</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>54</x>
+     <x>50</x>
      <y>200</y>
-     <width>71</width>
+     <width>81</width>
      <height>20</height>
     </rect>
    </property>
    <property name="text">
-    <string>Color Medio</string>
+    <string>Color Medio:</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_5">
@@ -135,12 +135,12 @@
     <rect>
      <x>70</x>
      <y>130</y>
-     <width>55</width>
-     <height>16</height>
+     <width>81</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="text">
-    <string>Canales</string>
+    <string>Canales:</string>
    </property>
   </widget>
  </widget>

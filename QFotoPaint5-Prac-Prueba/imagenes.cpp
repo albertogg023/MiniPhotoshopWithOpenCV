@@ -26,6 +26,8 @@ Scalar color_pincel= CV_RGB(255, 255, 255);
 
 int difum_pincel= 10;
 
+int anteriox,anteriory;
+
 bool preguntar_guardar= true;
 
 static int numpos= 0; // Número actual en el orden de posición de las ventanas
@@ -499,11 +501,12 @@ void cb_rellenar (int factual, int x, int y)
 {
     Mat rellenado=foto[factual].img.clone();
     Mat res;
-    Scalar lo=Scalar(radio_pincel,radio_pincel,radio_pincel);
-    Scalar up=Scalar(radio_pincel,radio_pincel,radio_pincel);
+    Scalar lo=Scalar(radio_pincel+1,radio_pincel+1,radio_pincel+1);
+    Scalar up=Scalar(radio_pincel+1,radio_pincel+1,radio_pincel+1);
     Scalar newVal=Scalar(color_pincel.val[0],color_pincel.val[1],color_pincel.val[2]);
     floodFill(rellenado,Point(x,y),newVal,NULL,lo,up,FLOODFILL_FIXED_RANGE);
-    addWeighted(foto[factual].img,0.4,rellenado,0.6,0,res);
+    double ponderacion=(difum_pincel+1)/121.0;
+    addWeighted(foto[factual].img,ponderacion,rellenado,1-ponderacion,0,res);
     imshow(foto[factual].nombre, res);
     foto[factual].img=res;
     foto[factual].modificada= true;
@@ -515,11 +518,12 @@ void cb_ver_rellenar (int factual, int x, int y)
 {
     Mat rellenado=foto[factual].img.clone();
     Mat res;
-    Scalar lo=Scalar(radio_pincel,radio_pincel,radio_pincel);
-    Scalar up=Scalar(radio_pincel,radio_pincel,radio_pincel);
+    Scalar lo=Scalar(radio_pincel+1,radio_pincel+1,radio_pincel+1);
+    Scalar up=Scalar(radio_pincel+1,radio_pincel+1,radio_pincel+1);
     Scalar newVal=Scalar(color_pincel.val[0],color_pincel.val[1],color_pincel.val[2]);
     floodFill(rellenado,Point(x,y),newVal,NULL,lo,up,FLOODFILL_FIXED_RANGE);
-    addWeighted(foto[factual].img,0.4,rellenado,0.6,0,res);
+    double ponderacion=(difum_pincel+1)/121.0;
+    addWeighted(foto[factual].img,ponderacion,rellenado,1-ponderacion,0,res);
     imshow(foto[factual].nombre, res);
 }
 
@@ -527,16 +531,15 @@ void cb_ver_rellenar (int factual, int x, int y)
 
 void cb_trazo(int factual, int x, int y)
 {
-
+    Mat im= foto[factual].img;
+    circle(im, Point(x, y), radio_pincel+1, color_pincel, -1, LINE_AA);
+    line(im, Point(anteriox, anteriory), Point(x,y), color_pincel, radio_pincel+1);
+    anteriox=x;
+    anteriory=y;
+    imshow(foto[factual].nombre, im);
+    foto[factual].modificada=true;
 }
 
-
-//---------------------------------------------------------------------------
-
-void cb_ver_trazo(int factual, int x, int y)
-{
-
-}
 
 //---------------------------------------------------------------------------
 
@@ -559,8 +562,8 @@ void callback (int event, int x, int y, int flags, void *_nfoto)
         return;
     // 1.4. Se inicia la pulsación del ratón
     if (event==EVENT_LBUTTONDOWN) {
-        downx= x;
-        downy= y;
+       anteriox= downx= x;
+       anteriory= downy= y;
     }
 
     // 2. Según la herramienta actual
@@ -631,10 +634,8 @@ void callback (int event, int x, int y, int flags, void *_nfoto)
         break;
         // 2.8. Herramienta Trazo
     case HER_TRAZO:
-        if (event==EVENT_LBUTTONUP)
+        if (flags==EVENT_FLAG_LBUTTON)
             cb_trazo(factual, x, y);
-        else if (event==EVENT_MOUSEMOVE && flags==EVENT_FLAG_LBUTTON)
-            cb_ver_trazo(factual, x, y);
         else
             ninguna_accion(factual, x, y);
         break;
