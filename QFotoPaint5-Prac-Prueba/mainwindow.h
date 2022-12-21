@@ -93,6 +93,8 @@ private slots:
     void on_actionAjustar_rojo_verde_azul_2_triggered();
     void on_toolButton_10_clicked();
     void on_actionRellenar_triggered();
+    void on_actionTrazo_triggered();
+    void on_toolButton_11_clicked();
 };
 
 extern MainWindow *w;

@@ -495,14 +495,47 @@ void cb_ver_seleccion (int factual, int x, int y, bool foto_roi)
 
 //---------------------------------------------------------------------------
 
-void cb_rellenar (int factual)
+void cb_rellenar (int factual, int x, int y)
 {
-    Mat res=foto[factual].img.clone();
+    Mat rellenado=foto[factual].img.clone();
+    Mat res;
     Scalar lo=Scalar(radio_pincel,radio_pincel,radio_pincel);
     Scalar up=Scalar(radio_pincel,radio_pincel,radio_pincel);
     Scalar newVal=Scalar(color_pincel.val[0],color_pincel.val[1],color_pincel.val[2]);
-    floodFill(res,Point(downx,downy),newVal,NULL,lo,up,FLOODFILL_FIXED_RANGE);
+    floodFill(rellenado,Point(x,y),newVal,NULL,lo,up,FLOODFILL_FIXED_RANGE);
+    addWeighted(foto[factual].img,0.4,rellenado,0.6,0,res);
     imshow(foto[factual].nombre, res);
+    foto[factual].img=res;
+    foto[factual].modificada= true;
+}
+
+//---------------------------------------------------------------------------
+
+void cb_ver_rellenar (int factual, int x, int y)
+{
+    Mat rellenado=foto[factual].img.clone();
+    Mat res;
+    Scalar lo=Scalar(radio_pincel,radio_pincel,radio_pincel);
+    Scalar up=Scalar(radio_pincel,radio_pincel,radio_pincel);
+    Scalar newVal=Scalar(color_pincel.val[0],color_pincel.val[1],color_pincel.val[2]);
+    floodFill(rellenado,Point(x,y),newVal,NULL,lo,up,FLOODFILL_FIXED_RANGE);
+    addWeighted(foto[factual].img,0.4,rellenado,0.6,0,res);
+    imshow(foto[factual].nombre, res);
+}
+
+//---------------------------------------------------------------------------
+
+void cb_trazo(int factual, int x, int y)
+{
+
+}
+
+
+//---------------------------------------------------------------------------
+
+void cb_ver_trazo(int factual, int x, int y)
+{
+
 }
 
 //---------------------------------------------------------------------------
@@ -589,10 +622,21 @@ void callback (int event, int x, int y, int flags, void *_nfoto)
 
         // 2.7. Herramienta Rellenar
     case HER_RELLENAR:
-         if (event==EVENT_LBUTTONUP || event==EVENT_MOUSEMOVE)
-             cb_rellenar(factual);
+        if (event==EVENT_LBUTTONUP)
+            cb_rellenar(factual,x,y);
+        else if (event==EVENT_MOUSEMOVE && flags==EVENT_FLAG_LBUTTON)
+            cb_ver_rellenar(factual,x,y);
         else
-             ninguna_accion(factual,x,y);
+            ninguna_accion(factual,x,y);
+        break;
+        // 2.8. Herramienta Trazo
+    case HER_TRAZO:
+        if (event==EVENT_LBUTTONUP)
+            cb_trazo(factual, x, y);
+        else if (event==EVENT_MOUSEMOVE && flags==EVENT_FLAG_LBUTTON)
+            cb_ver_trazo(factual, x, y);
+        else
+            ninguna_accion(factual, x, y);
         break;
     }
 

@@ -403,6 +403,25 @@ p, li { white-space: pre-wrap; }
      <bool>true</bool>
     </property>
    </widget>
+   <widget class="QToolButton" name="toolButton_11">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>0</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Trazo</string>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="autoExclusive">
+     <bool>true</bool>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -410,7 +429,7 @@ p, li { white-space: pre-wrap; }
      <x>0</x>
      <y>0</y>
      <width>544</width>
-     <height>26</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuArchivo">
@@ -469,6 +488,7 @@ p, li { white-space: pre-wrap; }
     <addaction name="actionArco_ris"/>
     <addaction name="actionSeleccionar"/>
     <addaction name="actionRellenar"/>
+    <addaction name="actionTrazo"/>
    </widget>
    <widget class="QMenu" name="menuTransformar">
     <property name="title">
@@ -863,6 +883,11 @@ p, li { white-space: pre-wrap; }
   <action name="actionRellenar">
    <property name="text">
     <string>Rellenar</string>
+   </property>
+  </action>
+  <action name="actionTrazo">
+   <property name="text">
+    <string>Trazo</string>
    </property>
   </action>
  </widget>
