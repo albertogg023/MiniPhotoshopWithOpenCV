@@ -429,7 +429,7 @@ p, li { white-space: pre-wrap; }
      <x>0</x>
      <y>0</y>
      <width>544</width>
-     <height>21</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuArchivo">
@@ -522,7 +522,6 @@ p, li { white-space: pre-wrap; }
     <addaction name="actionAjuste_lineal_del_hisograma"/>
     <addaction name="actionEspectro"/>
     <addaction name="actionModelo_de_color"/>
-    <addaction name="actionCurva_tonal"/>
     <addaction name="actionAjustar_rojo_verde_azul_2"/>
    </widget>
    <widget class="QMenu" name="menuEfectos">

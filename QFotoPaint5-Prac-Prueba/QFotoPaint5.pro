@@ -20,7 +20,6 @@ SOURCES += main.cpp\
     capturarvideo.cpp \
     dialogbajorelieve.cpp \
     histlocal.cpp \
-    histograma2d.cpp \
     informacion.cpp \
     mainwindow.cpp \
     imagenes.cpp \
@@ -45,7 +44,6 @@ HEADERS  += mainwindow.h \
     capturarvideo.h \
     dialogbajorelieve.h \
     histlocal.h \
-    histograma2d.h \
     imagenes.h \
     dialognueva.h \
     brillocontraste.h \
@@ -71,7 +69,6 @@ FORMS    += mainwindow.ui \
     dialognueva.ui \
     brillocontraste.ui \
     histlocal.ui \
-    histograma2d.ui \
     informacion.ui \
     matsalutlum.ui \
     modelocolor.ui \

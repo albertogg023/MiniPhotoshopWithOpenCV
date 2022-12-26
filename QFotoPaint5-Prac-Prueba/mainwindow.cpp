@@ -594,11 +594,6 @@ void MainWindow::on_actionNuevo_desde_portapapeles_triggered()
 
 }
 
-void MainWindow::on_actionCurva_tonal_triggered()
-{
-
-}
-
 void MainWindow::on_actionCopiar_a_portapapeles_triggered()
 {
     if(foto_activa()!=-1){

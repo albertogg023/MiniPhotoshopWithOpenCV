@@ -531,13 +531,48 @@ void cb_ver_rellenar (int factual, int x, int y)
 
 void cb_trazo(int factual, int x, int y)
 {
-    Mat im= foto[factual].img;
-    circle(im, Point(x, y), radio_pincel+1, color_pincel, -1, LINE_AA);
-    line(im, Point(anteriox, anteriory), Point(x,y), color_pincel, radio_pincel+1);
-    anteriox=x;
-    anteriory=y;
+    Mat im= foto[factual].img;  // Ojo: esto no es una copia, sino a la misma imagen
+    if (difum_pincel==0){
+        circle(im, Point(x, y), radio_pincel+1, color_pincel, -1, LINE_AA);
+        line(im, Point(anteriox, anteriory), Point(x,y), color_pincel, radio_pincel+1);
+        anteriox=x;
+        anteriory=y;
+    }
+    else {
+        int tam=radio_pincel+difum_pincel;
+        int posx=tam,posy=tam;
+        Rect roi(x-tam,y-tam,2*tam+1,2*tam+1);
+        if(roi.x<0){
+            roi.width+=roi.x;
+            posx+=roi.x;
+            roi.x=0;
+        }
+        if(roi.y<0){
+            roi.height+=roi.y;
+            posy+=roi.y;
+            roi.y=0;
+        }
+        if(roi.x+roi.width > im.cols){
+            roi.width=im.cols-roi.x;
+        }
+        if(roi.y+roi.height > im.rows){
+            roi.height=im.rows-roi.y;
+        }
+        Mat frag=im(roi);
+        Mat res(frag.size(), frag.type(), color_pincel);
+        Mat cop(frag.size(), frag.type(), CV_RGB(0,0,0));
+        circle(cop, Point(posx, posy), radio_pincel+1, CV_RGB(255,255,255), -1, LINE_AA);
+        line(cop, Point(anteriox, anteriory), Point(x,y), CV_RGB(255,255,255), radio_pincel+1);
+        anteriox=x;
+        anteriory=y;
+        blur(cop, cop, Size(difum_pincel*2+1, difum_pincel*2+1));
+        multiply(res, cop, res, 1.0/255.0);
+        bitwise_not(cop, cop);
+        multiply(frag, cop, frag, 1.0/255.0);
+        frag= res + frag;
+    }
     imshow(foto[factual].nombre, im);
-    foto[factual].modificada=true;
+    foto[factual].modificada= true;
 }
 
 
@@ -826,8 +861,6 @@ void ver_histograma(int nfoto,int nres, int canal)
     QImage imq= QImage(":/imagenes/histbase.png");
     Mat imghist(imq.height(),imq.width(),CV_8UC4,imq.scanLine(0));
     cvtColor(imghist, imghist, COLOR_RGBA2RGB);
-    /*namedWindow("Imagen", WINDOW_NORMAL);
-    imshow("Imagen", imghist);*/
     Mat gris;
     Mat hist;
     cvtColor(foto[nfoto].img, gris, COLOR_BGR2GRAY);  // Conversión a gris
@@ -944,8 +977,6 @@ void escala_color(int nfoto,int nres)
     LUT(gris,lut,res);
     crear_nueva(nres,res);
 }
-
-//Comprobar para colores muy claros o muy oscuros para ello calcular el valor gris del color objetivo
 
 //---------------------------------------------------------------------------
 

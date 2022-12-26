@@ -177,10 +177,6 @@ void ver_histograma(int nfoto, int nres, int canal);
 //Mostrar histograma de la imagen nfto, y
 //canal dado, guardando en nres.
 
-void ver_histograma2D(int nfoto, int nres, int canal1, int canal2, int numceldas=64);
-//Mostrar histograma de la imagen nfoto
-//canales dados y guardando en res
-
 void ver_bajo_relieve(int nfoto, double angulo,double grado, int fondo, bool guardar=false);
 
 void ver_perfilado(int nfoto, int tam, double grado, bool guardar=false);
@@ -198,8 +194,6 @@ void cambiar_modelo(int nfoto,int model,bool guardar=false);
 void ecualizacion_local_hist(int nfoto, int radio,bool guardar=false);
 
 void balance_blancos(int nfoto, int nres);
-
-void curva_tonal(int nfoto,int a, int b, bool guardar=false);
 
 void ajustar_color_canales(int nfoto, int azul,int verde,int rojo, int opcion,bool guardar=false);
 
