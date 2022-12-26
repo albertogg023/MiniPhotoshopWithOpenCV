@@ -1,0 +1,21 @@
+<RCC>
+    <qresource prefix="/">
+        <file>imagenes/abrir.png</file>
+        <file>imagenes/elipse.png</file>
+        <file>imagenes/guardar.png</file>
+        <file>imagenes/linea.png</file>
+        <file>imagenes/logo.png</file>
+        <file>imagenes/nuevo.png</file>
+        <file>imagenes/poligono.png</file>
+        <file>imagenes/punto.png</file>
+        <file>imagenes/rectangulo.png</file>
+        <file>imagenes/rellenar.png</file>
+        <file>imagenes/seleccionar.png</file>
+        <file>imagenes/icono.png</file>
+        <file>imagenes/icono.ico</file>
+        <file>imagenes/histbase.png</file>
+        <file>imagenes/madera.jpg</file>
+        <file>imagenes/arena.jpg</file>
+        <file>imagenes/cielo.jpg</file>
+    </qresource>
+</RCC>
