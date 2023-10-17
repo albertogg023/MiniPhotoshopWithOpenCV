@@ -1,4 +1,5 @@
 #MiniPhotoshopWithOpenCV
+
 Este proyecto consiste en una aplicación de edición de imágenes y vídeos desarrollada en C++ y OpenCV. La aplicación permite realizar diversas operaciones de procesamiento de imágenes y vídeos de manera eficiente.
 
 ## Estructura de Directorios
